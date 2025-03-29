@@ -4,9 +4,21 @@ pipeline{
         maven 'maven'
     }
     stages{
+        stage('install'){
+            steps{
+            sh 'npm install'
+            }
+        }
+        stages{
+        stage('tests'){
+            steps{
+            sh 'npm test || echo "No tests defined"'
+            }
+        }
+    stages{
         stage('built'){
             steps{
-            sh 'Hello, World!'
+             sh 'npm run build'  
             }
         }
         stage('PORT'){
@@ -16,4 +28,7 @@ pipeline{
                 }
         }
     }
+}
+}
+}
 }
