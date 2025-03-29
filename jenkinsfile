@@ -1,12 +1,9 @@
 pipeline {
     agent any
-    stages {
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: '<https://github.com/PrakashBhattacharya/test3.git>'
-            }
-        }
-        stage('Install Dependencies') {
+    tools {
+        maven 'maven' 
+    }
+        stage('Install') {
             steps {
                 sh 'npm install'
             }
@@ -16,10 +13,10 @@ pipeline {
                 sh 'npm test || echo "No tests defined"'
             }
         }
-        stage('Build Application') {
+        stage('Build') {
             steps {
                 sh 'npm run build'
             }
         }
     }
-}
+
