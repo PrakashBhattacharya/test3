@@ -6,28 +6,28 @@ pipeline{
     stages{
         stage('install'){
             steps{
-            sh 'npm install'
+            bat 'npm install'
             }
         }
         stages{
         stage('tests'){
             steps{
-            sh 'npm test || echo "No tests defined"'
+            bat 'npm test || echo "No tests defined"'
             }
         }
     stages{
         stage('built'){
             steps{
-             sh 'npm run build'  
+             bat 'npm run build'  
             }
         }
-        stage('PORT'){
+        /*stage('PORT'){
             steps{
                 script{
                    echo "Server is running on port ${PORT}" 
                 }
         }
-    }
+    }*/
 }
 }
 }
