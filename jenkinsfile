@@ -1,0 +1,19 @@
+pipeline{
+    agent any
+    tools{
+        maven 'maven'
+    }
+    stages{
+        stage('built'){
+            steps{
+            sh 'Hello, World!'
+            }
+        }
+        stage('PORT'){
+            steps{
+                script{
+                   echo "Server is running on port ${PORT}" 
+                }
+        }
+    }
+}
